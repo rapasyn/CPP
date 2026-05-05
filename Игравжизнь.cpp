@@ -14,14 +14,6 @@ void underpopulation();
 void createarray();
 void printarray();
  int neighborscount(int i,int j);
-void isruangle();
-void isrdangle();
-void isluangle();
-void isldangle();
-void islside();
-void isrside();
-void isdside();
-void isuside();
 
 	//\
 	@ живая
@@ -39,11 +31,11 @@ int main()
 	return 1;
 }
 void createarray() {
+	std::random_device rd;
+	std::mt19937 gen(rd());
+	std::bernoulli_distribution rand1(0.5);
 	for (int i = 0; i < arraysize; i++) {
 		for (int j = 0; j < arraysize; j++) {
-			std::random_device rd;
-			std::mt19937 gen(rd());
-			std::bernoulli_distribution rand1(0.5);
 			Life[i][j] = rand1(gen);
 		}
 	}
@@ -66,30 +58,6 @@ void turn() {
 }
 int neighborscount(int i, int j) { //живые соседи
 	int c = 0;
-	if (Life[i + 1][j + 1] == 1) {
-		c++; //<-крутой язык
-	}
-	if (Life[i][j + 1] == 1) {
-		c++; //<-крутой язык
-	}
-	if (Life[i - 1][j + 1] == 1) {
-		c++; //<-крутой язык
-	}
-	if (Life[i + 1][j] == 1) {
-		c++; //<-крутой язык
-	}
-	if (Life[i - 1][j] == 1) {
-		c++; //<-крутой язык
-	}
-	if (Life[i + 1][j - 1] == 1) {
-		c++; //<-крутой язык
-	}
-	if (Life[i][j - 1] == 1) {
-		c++; //<-крутой язык
-	}
-	if (Life[i - 1][j - 1] == 1) {
-		c++; //<-крутой язык
-	}
 	return c;
 }
 void reproduction() {
